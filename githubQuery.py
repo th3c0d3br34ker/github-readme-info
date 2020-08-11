@@ -89,10 +89,10 @@ repositoryListQuery = Template("""
 """)
 
 
-get_loc_url = Template("""/repos/$owner/$repo/stats/code_frequency""")
+getLinesOfCodeQuery = Template("""/repos/$owner/$repo/stats/code_frequency""")
 
-get_profile_view = Template("""/repos/$owner/$repo/traffic/views?per=week""")
+getProfileViewQuery = Template(
+    """/repos/$owner/$repo/traffic/views""")
 
-get_profile_traffic = Template("""
-/repos/$owner/$repo/traffic/popular/referrers
-""")
+getProfileTrafficQuery = Template(
+    """/repos/$owner/$repo/traffic/popular/referrers""")
