@@ -1,12 +1,12 @@
 <h1 align="center">✨README Generator ✨</h1>
 
 <p align="center">
-<img src="https://img.shields.io/badge/Made%20with-Python-1f425f.svg"/>
-<img src="https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg"/>
+<img src="https://img.shields.io/badge/Made%20with-Python-blue.svg"/>
+<img src="https://img.shields.io/badge/Made%20with-Markdown-black.svg"/>
 <img src="https://img.shields.io/github/license/th3c0d3br34ker/github-readme-info"/>
 <img src="https://img.shields.io/github/stars/th3c0d3br34ker/github-readme-info"/>
 <img src="https://img.shields.io/github/forks/th3c0d3br34ker/github-readme-info"/> 
-<img src="https://img.shields.io/static/v1?label=%F0%9F%8C%9F&message=If%20Useful&style=style=flat&color=blue" alt="Star Badge"/>
+<img src="https://img.shields.io/static/v1?label=%F0%9F%8C%9F&message=this%20Repository&style=style=flat&color=blue" alt="Star Badge"/>
 </p>
 
 <span align="center">
