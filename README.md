@@ -20,19 +20,19 @@ Let's check out in your profile readme!<br/>
 
 ## Flags Available
 
-> `SHOW_LINES_OF_CODE` flag can be set to `True` to show the Lines of code writen till date
+`SHOW_LINES_OF_CODE` flag can be set to `True` to show the Lines of code writen till date
 
 ```text
 From Hello World I have written 1.6 million Lines of Code ✍️
 ```
 
-> `SHOW_PROFILE_VIEWS` flag can be set to `False` to hide the Profile views
+`SHOW_PROFILE_VIEWS` flag can be set to `False` to hide the Profile views
 
 ```text
 ✨ 216 people were here!
 ```
 
-> `SHOW_DAILY_COMMIT` flag can be set to `False` to hide the commit stat
+`SHOW_DAILY_COMMIT` flag can be set to `False` to hide the commit stat
 
 ```text
 I'm a night 🦉
@@ -44,7 +44,7 @@ I'm a night 🦉
 
 ```
 
-> `SHOW_WEEKLY_COMMIT` flag can be set to `False` to hide the commit stat
+`SHOW_WEEKLY_COMMIT` flag can be set to `False` to hide the commit stat
 
 ```text
 📅 I'm Most Productive on Mondays
@@ -59,7 +59,7 @@ Sunday       30 commits     ██░░░░░░░░░░░░░░░�
 
 ```
 
-> `SHOW_LANGUAGE` flag can be set to `False` to hide the Number of repository in different language and framework
+`SHOW_LANGUAGE` flag can be set to `False` to hide the Number of repository in different language and framework
 
 ```text
 My 💖 languages Python
