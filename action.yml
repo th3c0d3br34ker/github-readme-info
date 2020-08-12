@@ -12,12 +12,12 @@ inputs:
     description: "Your Local TimeZone"
     required: true
 
-  SHOW_COMMIT:
+  SHOW_DAILY_COMMIT:
     required: false
     description: "Shows the number of commit graph in the dev metrics."
     default: "True"
 
-  SHOW_DAYS_OF_WEEK:
+  SHOW_WEEKLY_COMMIT:
     required: false
     description: "Shows day of week you are most productive."
     default: "True"
@@ -29,7 +29,12 @@ inputs:
 
   SHOW_PROFILE_VIEWS:
     required: false
-    description: "Shows the Current Profile Views"
+    description: "Shows the Profile Views."
+    default: "True"
+
+  SHOW_LANGUAGE:
+    required: false
+    description: "Shows the most used language."
     default: "True"
 
 runs:
