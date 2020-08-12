@@ -12,6 +12,26 @@ inputs:
     description: "Your Local TimeZone"
     required: true
 
+  SHOW_COMMIT:
+    required: false
+    description: "Shows the number of commit graph in the dev metrics."
+    default: "True"
+
+  SHOW_DAYS_OF_WEEK:
+    required: false
+    description: "Shows day of week you are most productive."
+    default: "True"
+
+  SHOW_LINES_OF_CODE:
+    required: false
+    description: "Show the Total Lines Of Code written Badge till date."
+    default: "True"
+
+  SHOW_PROFILE_VIEWS:
+    required: false
+    description: "Shows the Current Profile Views"
+    default: "True"
+
 runs:
   using: "docker"
   image: "Dockerfile"
