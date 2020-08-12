@@ -59,7 +59,7 @@ Sunday       30 commits     ██░░░░░░░░░░░░░░░�
 
 ```
 
-> `SHOW_LANGUAGE_PER_REPO` flag can be set to `False` to hide the Number of repository in different language and framework
+> `SHOW_LANGUAGE` flag can be set to `False` to hide the Number of repository in different language and framework
 
 ```text
 My 💖 languages Python
