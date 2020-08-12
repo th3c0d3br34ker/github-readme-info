@@ -1,0 +1,21 @@
+name: "GitHub README Generator"
+author: "Jainam Desai"
+description: "A lot of customizable features! ✨"
+
+inputs:
+  GH_TOKEN:
+    description: "GitHub access token with Repo scope"
+    required: true
+    default: ${{ github.token }}
+
+  TIMEZONE:
+    description: "Your Local TimeZone"
+    required: true
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+
+branding:
+  icon: "activity"
+  color: "blue"
