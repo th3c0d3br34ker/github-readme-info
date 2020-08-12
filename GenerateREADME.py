@@ -240,12 +240,19 @@ def generateData() -> str:
 
     repos = [d for d in nodes if d['isFork'] is False]
 
-    string += getLinesOfCode(repos)
-    string += getProfileViews()
-    string += getLanguagesPerRepo()
-    string += getWeeklyCommitData(repos)
-    string += getDailyCommitData(repos)
     string += getTotalContributions()
+
+    if getenv("INPUT_SHOW_LINES_OF_CODE"):
+        string += getLinesOfCode(repos)
+    if getenv("INPUT_SHOW_PROFILE_VIEW"):
+        string += getProfileViews()
+    if getenv("INPUT_SHOW_DAILY_COMMIT"):
+        string += getDailyCommitData(repos)
+    if getenv("INPUT_SHOW_WEEKLY_COMMIT"):
+        string += getWeeklyCommitData(repos)
+    if getenv("INPUT_SHOW_LANGUAGEW"):
+        string += getLanguagesPerRepo()
+
     print("README data created!")
     newREADME = generateREADME(string, readme.content)
     return newREADME
