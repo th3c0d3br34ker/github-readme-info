@@ -6,7 +6,7 @@
 <img src="https://img.shields.io/github/license/th3c0d3br34ker/github-readme-info"/>
 <img src="https://img.shields.io/github/stars/th3c0d3br34ker/github-readme-info"/>
 <img src="https://img.shields.io/github/forks/th3c0d3br34ker/github-readme-info"/> 
-<img src="https://img.shields.io/static/v1?label=🌟&message=If%20Useful&style=style=flat&color=blue" alt="Star Badge"/>
+<img src="https://img.shields.io/static/v1?label=%F0%9F%8C%9F&message=If%20Useful&style=style=flat&color=blue" alt="Star Badge"/>
 </p>
 
 <span align="center">
