@@ -250,7 +250,7 @@ def generateData() -> str:
         string += getDailyCommitData(repos)
     if getenv("INPUT_SHOW_WEEKLY_COMMIT"):
         string += getWeeklyCommitData(repos)
-    if getenv("INPUT_SHOW_LANGUAGEW"):
+    if getenv("INPUT_SHOW_LANGUAGE"):
         string += getLanguagesPerRepo()
 
     print("README data created!")
