@@ -3,6 +3,7 @@ FROM nikolaik/python-nodejs:latest
 # Install dependencies.
 ADD requirements.txt /requirements.txt
 ADD GenerateREADME.py /GenerateREADME.py
+ADD githubQuery.py /githubQuery.py
 ADD utility.py /utility.py
 RUN pip install -r requirements.txt
 
