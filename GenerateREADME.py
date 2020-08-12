@@ -1,21 +1,20 @@
 # Python: 3.8.x
 
 # System Imports
-
 from os import getenv
 from datetime import datetime
 from traceback import print_exc
 
 
 # Third Party Imports
-from github import Github, GithubException
+from github import Github
 from dotenv import load_dotenv
 import humanize
 from pytz import utc, timezone
 
 # Custom Imports
 from githubQuery import *
-from utility import RunQuery, makeCommitList
+from utility import RunQuery, makeCommitList, makeLanguageList, generateREADME
 
 # Load Environment Variables
 load_dotenv()
@@ -33,6 +32,8 @@ show_days_of_week = getenv('INPUT_SHOW_DAYS_OF_WEEK')
 
 
 def getDailyCommitData(repositoryList: list) -> str:
+    print("Generating Daily Commit Data... ")
+
     tz = getenv('INPUT_TIMEZONE')
 
     morning = 0  # 4 - 10
@@ -82,13 +83,15 @@ def getDailyCommitData(repositoryList: list) -> str:
             nighttime) + " commits", "percent": round((nighttime / totalCommits) * 100, 2)},
     ]
 
-    data = '**' + title + '** \n\n' + \
-        '```text\n' + makeCommitList(eachDay) + '\n\n```\n'
+    print("Daily Commit Data created!")
 
-    return data
+    return "**" + title + "** \n\n" + \
+        "```text\n" + makeCommitList(eachDay) + "\n\n```\n"
 
 
 def getWeeklyCommitData(repositoryList: list) -> str:
+    print("Generating Weekly Commit Data... ")
+
     tz = getenv('INPUT_TIMEZONE')
 
     weekdays = [0, 0, 0, 0, 0, 0, 0]
@@ -122,7 +125,7 @@ def getWeeklyCommitData(repositoryList: list) -> str:
                     weekdays[6] += 1
 
         except Exception as exception:
-            print("ERROR", repository["name"], "is private!")
+            print("ERROR", repository["name"])
 
     totalCommits = sum(weekdays)
 
@@ -151,23 +154,60 @@ def getWeeklyCommitData(repositoryList: list) -> str:
         if day['percent'] > max_element['percent']:
             max_element = day
 
+    print("Weekly Commit Data created!")
+
     title = 'I\'m Most Productive on ' + max_element['name'] + 's'
+    return "📅 **" + title + "** \n\n" + \
+        "```text\n" + makeCommitList(dayOfWeek) + "\n```\n"
 
-    data = '📅 **' + title + '** \n\n' + \
-        '```text\n' + makeCommitList(dayOfWeek) + '\n\n```\n'
 
-    return data
+def getLanguagesPerRepo() -> str:
+    print("Generating Most used Language... ", end="")
+
+    language_count = {}
+    total = 0
+    result = Query.runGithubGraphqlQuery(
+        repositoryListQuery.substitute(username=username, id=id))
+
+    for repo in result['data']['user']['repositories']['edges']:
+        if repo['node']['primaryLanguage'] is None:
+            continue
+        language = repo['node']['primaryLanguage']['name']
+        color_code = repo['node']['primaryLanguage']['color']
+        total += 1
+        if language not in language_count.keys():
+            language_count[language] = {}
+            language_count[language]['count'] = 1
+        else:
+            language_count[language]['count'] = language_count[language]['count'] + 1
+        language_count[language]['color'] = color_code
+    data = []
+    sorted_labels = list(language_count.keys())
+    sorted_labels.sort(key=lambda x: language_count[x]['count'], reverse=True)
+    most_language_repo = sorted_labels[0]
+    for label in sorted_labels:
+        percent = round(language_count[label]['count'] / total * 100, 2)
+        data.append({
+            "name": label,
+            "text": str(language_count[label]['count']) + " repos",
+            "percent": percent
+        })
+
+    print("Done")
+    title = "My 💖 languages " + most_language_repo
+    return "**" + title + "** \n\n" + "```text\n" + makeLanguageList(data) + "\n```\n"
 
 
 def getProfileViews() -> str:
 
     data = Query.runGithubAPIQuery(getProfileViewQuery.substitute(
         owner=username, repo=username))
-    return str(data["count"])
+
+    return ('**✨ ' + str(data["count"]) + ' people were here!**\n\n')
 
 
 def getLinesOfCode(repositoryList):
-
+    print("Generating Lines Of Code... ", end="")
     totalLOC = 0
     for repository in repositoryList:
         try:
@@ -178,14 +218,21 @@ def getLinesOfCode(repositoryList):
                 totalLOC += (data[1] - data[2])
         except Exception as execption:
             print(execption)
+    print("Done")
+    return ("**From Hello World I have written " + humanize.intword(int(totalLOC)) + " Lines of Code ✍️**\n\n")
 
-    return humanize.intword(int(totalLOC))
+
+def getTotalContributions():
+    data = Query.runGithubContributionsQuery(username)
+    total = data['years'][0]['total']
+    year = data['years'][0]['year']
+    return "🏆 " + humanize.intcomma(total) + " Contributions in year " + year + "\n\n"
 
 
-def generateCommitData() -> str:
+def generateData() -> str:
 
-    string = ''
-    print("Generating Commit Data for... {}".format(username))
+    string = ""
+    print("Generating new README Data... ")
 
     result = Query.runGithubGraphqlQuery(
         createContributedRepoQuery.substitute(username=username))
@@ -193,18 +240,21 @@ def generateCommitData() -> str:
 
     repos = [d for d in nodes if d['isFork'] is False]
 
-    print("Lines Of Code: ", getLinesOfCode(repos))
-    print("Profile Views: ", getProfileViews())
-    print(getWeeklyCommitData(repos))
-    print(getDailyCommitData(repos))
-
-    return string
+    # string += getLinesOfCode(repos)
+    # string += getProfileViews()
+    # string += getLanguagesPerRepo()
+    # string += getWeeklyCommitData(repos)
+    string += getDailyCommitData(repos)
+    # string += getTotalContributions()
+    print("README data created!")
+    newREADME = generateREADME(string, readme.content)
+    return newREADME
 
 
 if __name__ == "__main__":
     try:
         if ghtoken is None:
-            raise Exception('Token not available')
+            raise Exception("Token not available")
 
         # Strart the Calculation
         githubObject = Github(ghtoken)
@@ -222,8 +272,15 @@ if __name__ == "__main__":
         # Get user repository
         repo = githubObject.get_repo(f"{username}/{username}")
 
+        readme = repo.get_readme()
+
         # Running task now ...
-        print(generateCommitData())
+        newREADME = generateData()
+        with open("../README.md", "w+") as f:
+            f.write(newREADME)
+
+        # repo.update_file(path=readme.path, message="⤴ Auto Updated README",
+        #                  content=newREADME, sha=readme.sha, branch='master')
     except Exception as e:
         print_exc()
         print("ERROR:: ", str(e))
