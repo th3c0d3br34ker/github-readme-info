@@ -108,12 +108,6 @@ HTML         1 repos █░░░░░░░░░░░░░░░░░░�
 🏆 531 Contributions in year 2020
 ```
 
-`SAY_THANKS` flag can be set to `True` to if you want to attribute me in your README. Thanks in advance 💞
-
-```text
-Made with ❤ by Jainam Desai
-```
-
 ### Inspired From 🚀
 
 > [matchai/awesome-pinned-gists)](https://github.com/matchai/awesome-pinned-gists)  
