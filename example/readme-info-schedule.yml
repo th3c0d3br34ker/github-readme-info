@@ -14,9 +14,9 @@ jobs:
         with:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           TIMEZONE: "Asia/Kolkata"
-          SHOW_LINES_OF_CODE: "False"
-          SHOW_PROFILE_VIEWS: "False"
-          SHOW_DAILY_COMMIT: "False"
-          SHOW_WEEKLY_COMMIT: "False"
-          SHOW_LANGUAGE: "False"
-          SHOW_TOTAL_CONTRIBUTIONS: "False"
+          SHOW_LINES_OF_CODE: "True"
+          SHOW_PROFILE_VIEWS: "True"
+          SHOW_DAILY_COMMIT: "True"
+          SHOW_WEEKLY_COMMIT: "True"
+          SHOW_LANGUAGE: "True"
+          SHOW_TOTAL_CONTRIBUTIONS: "True"
