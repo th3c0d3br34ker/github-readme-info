@@ -256,9 +256,6 @@ def generateData() -> str:
     if getenv("INPUT_SHOW_LANGUAGE") == 'True':
         stats = getLanguagesPerRepo()
         ReadmeMaker.generateMostUsedLanguage(stats)
-    if getenv("INPUT_SAY_THANKS") == 'True':
-        stats = getLanguagesPerRepo()
-        ReadmeMaker.generateSayThanks()
 
     print("README data created!")
 
