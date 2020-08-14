@@ -1,4 +1,4 @@
-<h1 align="center">✨README Generator ✨</h1>
+<h1 align="center">✨README Info Generator ✨</h1>
 
 <p align="center">
 <img src="https://img.shields.io/badge/Made%20with-Python-blue.svg"/>
@@ -11,12 +11,43 @@
 
 <span align="center">
 
+Flex your Stats with this highly customizable tool!<br/>
 Are you an early 🐤 or a night 🦉?<br/>
 When are you most productive during the day?<br/>
 What are languages you code in?<br/>
-Let's check out in your profile readme!<br/>
 
 </span>
+
+## Setup
+
+1. You need to update the markdown file(.md) with the `START_SECTION` and `STOP_SECTION` comments. You can refer [this](#entry-points) section for updating it.
+
+2. You'll need a GitHub API Token with `repo` and `user` scope from [here](https://github.com/settings/tokens) if you're running the action to get commit metrics
+
+   > enabling the `repo` scope seems **DANGEROUS**<br/>
+   > but this GitHub Action only accesses your commit timestamp and lines of code added or deleted in repository you contributed.
+
+3. You need to save the GitHub API Token in the repository secrets. You can find that in the Settings of your repository. Be sure to save those as GitHub Personal Access Token as `GH_TOKEN=<your github access token>`
+
+4. You can enable and disable feature flags based on requirements. See [this](#flags-available).
+
+5. For the final step you need to add an `.yml` file in your workflows folder. You can copy/paste [this](./example/readme-info-schedule.yml) example file and enable/disable flags as you wish!.
+
+The Required fields are:
+
+> GH_TOKEN Your GitHub token explainer in Step 2.  
+> TIMEZONE Your timezone, defaults to "Asia/Kolkata" for India.
+
+## Entry Points
+
+Add a comment to your `README.md` like this:
+
+```md
+<!--START_SECTION:readme-info-->
+<!--END_SECTION:readme-info-->
+```
+
+See this example [file](./example/README.md). You can put these Entry Points anywhere and in any order you please! 🤷‍♂️
 
 ## Flags Available
 
@@ -71,7 +102,19 @@ HTML         1 repos █░░░░░░░░░░░░░░░░░░�
 
 ```
 
-### Inspired From
+`SHOW_TOTAL_CONTRIBUTIONS` flag can be set to `False` to hide the total Number of Contributions
+
+```text
+🏆 531 Contributions in year 2020
+```
+
+`SAY_THANKS` flag can be set to `True` to if you want to attribute me in your README. Thanks in advance ❤
+
+```text
+Made with ❤ by [Jainam Desai](https://th3c0d3br34ker.github.io)
+```
+
+### Inspired From 🚀
 
 > [matchai/awesome-pinned-gists)](https://github.com/matchai/awesome-pinned-gists)  
 > [athul/waka-readme](https://github.com/athul/waka-readme)  

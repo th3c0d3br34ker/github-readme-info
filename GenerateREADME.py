@@ -27,7 +27,10 @@ ghtoken = getenv('INPUT_GH_TOKEN')
 def getDailyCommitData(repositoryList: list) -> str:
     print("Generating Daily Commit Data... ")
 
-    tz = getenv('INPUT_TIMEZONE')
+    if getenv('INPUT_TIMEZONE') == None:
+        tz = "Asia/Kolkata"
+    else:
+        tz = getenv('INPUT_TIMEZONE')
 
     morning = 0  # 4 - 10
     daytime = 0  # 10 - 16
