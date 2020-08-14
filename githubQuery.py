@@ -1,4 +1,5 @@
 from string import Template
+from requests import get, post
 
 userInfoQuery = """
 {
@@ -96,3 +97,33 @@ getProfileViewQuery = Template(
 
 getProfileTrafficQuery = Template(
     """/repos/$owner/$repo/traffic/popular/referrers""")
+
+
+class RunQuery():
+
+    def __init__(self, headers):
+        self.headers = headers
+
+    def runGithubAPIQuery(self, query):
+        request = get("https://api.github.com" + query, headers=self.headers)
+        if request.status_code == 200:
+            return request.json()
+        else:
+            raise Exception(
+                "Query failed to run by returning code of {}. {},... {}".format(
+                    request.status_code, query, str(request.json())))
+
+    def runGithubGraphqlQuery(self, query) -> dict:
+        request = post("https://api.github.com/graphql",
+                       json={"query": query}, headers=self.headers)
+        if request.status_code == 200:
+            return request.json()
+        else:
+            raise Exception("Query failed to run by returning code of {}. {}".format(
+                request.status_code, query))
+
+    def runGithubContributionsQuery(self, username):
+        request = get(
+            "https://github-contributions.now.sh/api/v1/" + username)
+        if request.status_code == 200:
+            return request.json()
