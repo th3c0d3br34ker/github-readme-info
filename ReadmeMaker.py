@@ -75,7 +75,7 @@ class ReadmeGenerator():
     def generateSayThanks(self):
         START_COMMENT = '<!--START_SECTION_THANK_ME:readme-info-->'
         END_COMMENT = '<!--END_SECTION_THANK_ME:readme-info-->'
-        stats = "Made with ❤ by [Jainam Desai](https://th3c0d3br34ker.github.io)"
+        stats = "Made with 🖤 by [Jainam Desai](https://th3c0d3br34ker.github.io)"
         lines_of_code_in_readme = f"{START_COMMENT}\n{stats}\n{END_COMMENT}"
         listReg = f"{START_COMMENT}[\\s\\S]+{END_COMMENT}"
 

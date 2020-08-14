@@ -33,12 +33,12 @@ What are languages you code in?<br/>
 
 5. For the final step you need to add an `.yml` file in your workflows folder. You can copy/paste [this](./example/readme-info-schedule.yml) example file and enable/disable flags as you wish!.
 
-The Required fields are:
+### The Required fields are:
 
 > GH_TOKEN Your GitHub token explainer in Step 2.  
 > TIMEZONE Your timezone, defaults to "Asia/Kolkata" for India.
 
-## Entry Points
+### Entry Points
 
 Add a comment to your `README.md` like this:
 
@@ -108,7 +108,7 @@ HTML         1 repos █░░░░░░░░░░░░░░░░░░�
 🏆 531 Contributions in year 2020
 ```
 
-`SAY_THANKS` flag can be set to `True` to if you want to attribute me in your README. Thanks in advance ❤
+`SAY_THANKS` flag can be set to `True` to if you want to attribute me in your README. Thanks in advance 💞
 
 ```text
 Made with ❤ by [Jainam Desai](https://th3c0d3br34ker.github.io)
