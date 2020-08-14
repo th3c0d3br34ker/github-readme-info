@@ -20,4 +20,3 @@ jobs:
           SHOW_WEEKLY_COMMIT: "False"
           SHOW_LANGUAGE: "False"
           SHOW_TOTAL_CONTRIBUTIONS: "False"
-          SAY_THANKS: "True"
