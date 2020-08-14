@@ -111,7 +111,7 @@ HTML         1 repos █░░░░░░░░░░░░░░░░░░�
 `SAY_THANKS` flag can be set to `True` to if you want to attribute me in your README. Thanks in advance 💞
 
 ```text
-Made with ❤ by [Jainam Desai](https://th3c0d3br34ker.github.io)
+Made with ❤ by Jainam Desai
 ```
 
 ### Inspired From 🚀
