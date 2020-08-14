@@ -14,21 +14,14 @@ from pytz import utc, timezone
 
 # Custom Imports
 from githubQuery import *
-from utility import RunQuery, makeCommitList, makeLanguageList, generateREADME
+from ReadmeMaker import ReadmeGenerator
+from utility import makeCommitList, makeLanguageList
 
 # Load Environment Variables
 load_dotenv()
 
-START_COMMENT = '<!--START_SECTION:readme-info-->'
-END_COMMENT = '<!--END_SECTION:readme-info-->'
-listReg = f"{START_COMMENT}[\\s\\S]+{END_COMMENT}"
-
 # Get TOKEN
 ghtoken = getenv('INPUT_GH_TOKEN')
-
-# Get System Variables
-showCommit = getenv('INPUT_SHOW_COMMIT')
-show_days_of_week = getenv('INPUT_SHOW_DAYS_OF_WEEK')
 
 
 def getDailyCommitData(repositoryList: list) -> str:
@@ -231,8 +224,10 @@ def getTotalContributions():
 
 def generateData() -> str:
 
-    string = ""
+    stats = ""
     print("Generating new README Data... ")
+
+    ReadmeMaker = ReadmeGenerator(readme.content)
 
     result = Query.runGithubGraphqlQuery(
         createContributedRepoQuery.substitute(username=username))
@@ -240,21 +235,31 @@ def generateData() -> str:
 
     repos = [d for d in nodes if d['isFork'] is False]
 
-    string += getTotalContributions()
-
-    if getenv("INPUT_SHOW_LINES_OF_CODE"):
-        string += getLinesOfCode(repos)
-    if getenv("INPUT_SHOW_PROFILE_VIEW"):
-        string += getProfileViews()
-    if getenv("INPUT_SHOW_DAILY_COMMIT"):
-        string += getDailyCommitData(repos)
-    if getenv("INPUT_SHOW_WEEKLY_COMMIT"):
-        string += getWeeklyCommitData(repos)
-    if getenv("INPUT_SHOW_LANGUAGE"):
-        string += getLanguagesPerRepo()
+    if getenv('INPUT_SHOW_TOTAL_CONTRIBUTIONS') == 'True':
+        stats = getTotalContributions()
+        ReadmeMaker.generateTotalContributions(stats)
+    if getenv("INPUT_SHOW_LINES_OF_CODE") == 'True':
+        stats = getLinesOfCode(repos)
+        ReadmeMaker.generateLinesOfCodeStats(stats)
+    if getenv("INPUT_SHOW_PROFILE_VIEWS") == 'True':
+        stats = getProfileViews()
+        ReadmeMaker.generateProfileViewsStats(stats)
+    if getenv("INPUT_SHOW_DAILY_COMMIT") == 'True':
+        stats = getDailyCommitData(repos)
+        ReadmeMaker.generateDailyStats(stats)
+    if getenv("INPUT_SHOW_WEEKLY_COMMIT") == 'True':
+        stats = getWeeklyCommitData(repos)
+        ReadmeMaker.generateWeeklyStats(stats)
+    if getenv("INPUT_SHOW_LANGUAGE") == 'True':
+        stats = getLanguagesPerRepo()
+        ReadmeMaker.generateMostUsedLanguage(stats)
+    if getenv("INPUT_SAY_THANKS") == 'True':
+        stats = getLanguagesPerRepo()
+        ReadmeMaker.generateSayThanks()
 
     print("README data created!")
-    newREADME = generateREADME(string, readme.content)
+
+    newREADME = ReadmeMaker.getREADME()
     return newREADME
 
 
@@ -268,7 +273,6 @@ if __name__ == "__main__":
         headers = {"Authorization": "Bearer " + ghtoken}
 
         Query = RunQuery(headers)
-
         # Execute the query
         user_data = Query.runGithubGraphqlQuery(userInfoQuery)
         username = user_data["data"]["viewer"]["login"]
