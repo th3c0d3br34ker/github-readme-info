@@ -39,10 +39,3 @@
 <!--START_CONTRIBUTIONS:readme-info-->
 <!--END_CONTRIBUTIONS:readme-info-->
 ```
-
-## For Saying Thanks to me. Add this in the end.
-
-```md
-<!--START_SECTION_THANK_ME:readme-info-->
-<!--END_SECTION_THANK_ME:readme-info-->
-```
