@@ -110,7 +110,7 @@ HTML         1 repos █░░░░░░░░░░░░░░░░░░�
 
 ### Inspired From 🚀
 
-> [matchai/awesome-pinned-gists)](https://github.com/matchai/awesome-pinned-gists)  
+> [matchai/awesome-pinned-gists](https://github.com/matchai/awesome-pinned-gists)  
 > [athul/waka-readme](https://github.com/athul/waka-readme)  
 > [anmol098/waka-readme-stats](https://github.com/anmol098/waka-readme-stats)
 
