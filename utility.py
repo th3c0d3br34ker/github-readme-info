@@ -29,3 +29,4 @@ def makeCommitList(data: list) -> str:
         op = f"""|{l['name']}{' ' * (13 - ln)}|{l['text']}{' ' * (15 - ln_text)}|{makeGraph(l['percent'])}|{l['percent']}%|"""
         data_list.append(op)
     return '\n'.join(data_list)
+    
