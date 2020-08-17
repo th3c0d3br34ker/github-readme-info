@@ -298,10 +298,8 @@ if __name__ == "__main__":
         # Running task now ...
         newREADME = generateData()
 
-        with open("test/README.md", "w") as f:
-            f.write(newREADME)
-        # repo.update_file(path=readme.path, message="⤴ Auto Updated README",
-        #                  content=newREADME, sha=readme.sha, branch='master')
+        repo.update_file(path=readme.path, message="⤴ Auto Updated README",
+                         content=newREADME, sha=readme.sha, branch='master')
     except Exception as e:
         print_exc()
         print("ERROR:: ", str(e))
