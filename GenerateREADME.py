@@ -83,7 +83,9 @@ def getDailyCommitData(repositoryList: list) -> str:
 
     return "**" + title + "** \n" + """
 | | | | |
-| --- | --- | --- | --- |\n""" + makeCommitList(eachDay) + """| | | | |\n"""
+| --- | --- | --- | --- |
+""" + makeCommitList(eachDay) + """
+| | | | |\n"""
 
 
 def getWeeklyCommitData(repositoryList: list) -> str:
@@ -156,7 +158,9 @@ def getWeeklyCommitData(repositoryList: list) -> str:
     title = 'I\'m Most Productive on ' + max_element['name'] + 's'
     return "📅 **" + title + "** \n"+"""
 | | | | |
-| --- | --- | --- | --- |\n""" + makeCommitList(dayOfWeek) + "| | | | |\n"
+| --- | --- | --- | --- |
+""" + makeCommitList(dayOfWeek) + """
+| | | | |\n"""
 
 
 def getLanguagesPerRepo() -> str:
@@ -195,7 +199,9 @@ def getLanguagesPerRepo() -> str:
     title = "My 💖 languages " + most_language_repo
     return "**" + title + "** \n" + """
 | | | | |
-| --- | --- | --- | --- |\n""" + makeLanguageList(data) + """| | | | |\n"""
+| --- | --- | --- | --- |
+""" + makeLanguageList(data) + """
+| | | | |\n"""
 
 
 def getProfileViews() -> str:
