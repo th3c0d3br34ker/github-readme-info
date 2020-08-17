@@ -16,10 +16,9 @@ def makeLanguageList(data: list) -> str:
         ln = len(l['name'])
         ln_text = len(l['text'])
         op = f"""
-|{l['name'][:25]}{' ' * (25 - ln)}|{l['text']}|{' ' * (20 - ln_text)}{makeGraph(l['percent'])}|{l['percent']}%|
-        """
+|{l['name'][:25]}{' ' * (25 - ln)}|{l['text']}|{' ' * (20 - ln_text)}{makeGraph(l['percent'])}|{l['percent']}%|\n"""
         data_list.append(op)
-    return ' \n'.join(data_list)
+    return ' '.join(data_list)
 
 
 def makeCommitList(data: list) -> str:
