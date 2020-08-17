@@ -16,10 +16,7 @@ def makeLanguageList(data: list) -> str:
         ln = len(l['name'])
         ln_text = len(l['text'])
         op = f"""
-| | | | |
-| --- | --- | --- | --- |
 |{l['name'][:25]}{' ' * (25 - ln)}|{l['text']}|{' ' * (20 - ln_text)}{makeGraph(l['percent'])}|{l['percent']}%|
-| | | | |
         """
         data_list.append(op)
     return ' \n'.join(data_list)
