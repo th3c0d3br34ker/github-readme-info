@@ -81,8 +81,11 @@ def getDailyCommitData(repositoryList: list) -> str:
 
     print("Daily Commit Data created!")
 
-    return "**" + title + "** \n\n" + \
-        "```text\n" + makeCommitList(eachDay) + "\n\n```\n"
+    return "**" + title + "** \n" + """
+| | | | |
+| --- | --- | --- | --- |
+""" + makeCommitList(eachDay) + """
+| | | | |\n"""
 
 
 def getWeeklyCommitData(repositoryList: list) -> str:
@@ -153,8 +156,11 @@ def getWeeklyCommitData(repositoryList: list) -> str:
     print("Weekly Commit Data created!")
 
     title = 'I\'m Most Productive on ' + max_element['name'] + 's'
-    return "📅 **" + title + "** \n\n" + \
-        "```text\n" + makeCommitList(dayOfWeek) + "\n```\n"
+    return "📅 **" + title + "** \n"+"""
+| | | | |
+| --- | --- | --- | --- |
+""" + makeCommitList(dayOfWeek) + """
+| | | | |\n"""
 
 
 def getLanguagesPerRepo() -> str:
@@ -191,7 +197,11 @@ def getLanguagesPerRepo() -> str:
 
     print("Done")
     title = "My 💖 languages " + most_language_repo
-    return "**" + title + "** \n\n" + "```text\n" + makeLanguageList(data) + "\n```\n"
+    return "**" + title + "** \n" + """
+| | | | |
+| --- | --- | --- | --- |
+""" + makeLanguageList(data) + """
+| | | | |\n"""
 
 
 def getProfileViews() -> str:
@@ -222,7 +232,7 @@ def getTotalContributions():
     data = Query.runGithubContributionsQuery(username)
     total = data['years'][0]['total']
     year = data['years'][0]['year']
-    return "🏆 " + humanize.intcomma(total) + " Contributions in year " + year + "\n\n"
+    return "**🏆 " + humanize.intcomma(total) + " Contributions in year " + year + "**\n\n"
 
 
 def generateData() -> str:
