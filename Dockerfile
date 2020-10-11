@@ -1,11 +1,11 @@
 FROM nikolaik/python-nodejs:latest
 
 # Install dependencies.
-ADD requirements.txt /requirements.txt
-ADD GenerateREADME.py /GenerateREADME.py
-ADD githubQuery.py /githubQuery.py
-ADD ReadmeMaker.py /ReadmeMaker.py
-ADD utility.py /utility.py
+COPY requirements.txt /requirements.txt
+COPY GenerateREADME.py /GenerateREADME.py
+COPY githubQuery.py /githubQuery.py
+COPY ReadmeMaker.py /ReadmeMaker.py
+COPY utility.py /utility.py
 RUN pip install -r requirements.txt
 
 ENV NPM_CONFIG_PREFIX=/home/node/.npm-global

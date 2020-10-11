@@ -7,6 +7,7 @@
 <img src="https://img.shields.io/github/stars/th3c0d3br34ker/github-readme-info"/>
 <img src="https://img.shields.io/github/forks/th3c0d3br34ker/github-readme-info"/> 
 <img src="https://img.shields.io/static/v1?label=%F0%9F%8C%9F&message=this%20Repository&style=style=flat&color=blue" alt="Star Badge"/>
+<img src="https://app.codacy.com/project/badge/Grade/282ae5620b4140c99a0c5f4b8e6a362a"/>
 </p>
 
 <span align="center">
@@ -20,20 +21,20 @@ What are languages you code in?<br/>
 
 ## Setup
 
-1. You need to update the markdown file(.md) with the `START_SECTION` and `STOP_SECTION` comments. You can refer [this](#entry-points) section for updating it.
+1.  You need to update the markdown file(.md) with the `START_SECTION` and `STOP_SECTION` comments. You can refer [this](#entry-points) section for updating it.
 
-2. You'll need a GitHub API Token with `repo` and `user` scope from [here](https://github.com/settings/tokens) if you're running the action to get commit metrics
+2.  You'll need a GitHub API Token with `repo` and `user` scope from [here](https://github.com/settings/tokens) if you're running the action to get commit metrics
 
-   > enabling the `repo` scope seems **DANGEROUS**<br/>
-   > but this GitHub Action only accesses your commit timestamp and lines of code added or deleted in repository you contributed.
+> enabling the `repo` scope seems **DANGEROUS**<br/>
+> but this GitHub Action only accesses your commit timestamp and lines of code added or deleted in repository you contributed.
 
-3. You need to save the GitHub API Token in the repository secrets. You can find that in the Settings of your repository. Be sure to save those as GitHub Personal Access Token as `GH_TOKEN=<your github access token>`
+3.  You need to save the GitHub API Token in the repository secrets. You can find that in the Settings of your repository. Be sure to save those as GitHub Personal Access Token as `GH_TOKEN=<your github access token>`
 
-4. You can enable and disable feature flags based on requirements. See [this](#flags-available).
+4.  You can enable and disable feature flags based on requirements. See [this](#flags-available).
 
-5. For the final step you need to add an `.yml` file in your workflows folder. You can copy/paste [this](./example/readme-info-schedule.yml) example file and enable/disable flags as you wish!.
+5.  For the final step you need to add an `.yml` file in your workflows folder. You can copy/paste [this](./example/readme-info-schedule.yml) example file and enable/disable flags as you wish!.
 
-### The Required fields are:
+### The Required fields are
 
 > GH_TOKEN Your GitHub token explainer in Step 2.  
 > TIMEZONE Your timezone, defaults to "Asia/Kolkata" for India.
@@ -108,7 +109,7 @@ HTML         1 repos █░░░░░░░░░░░░░░░░░░�
 🏆 531 Contributions in year 2020
 ```
 
-### Inspired From 🚀
+### Inspired By 🚀
 
 > [matchai/awesome-pinned-gists](https://github.com/matchai/awesome-pinned-gists)  
 > [athul/waka-readme](https://github.com/athul/waka-readme)  
