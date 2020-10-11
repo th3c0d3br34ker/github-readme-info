@@ -58,7 +58,7 @@ def getDailyCommitData(repositoryList: list) -> str:
                     evening += 1
                 if 0 <= hour < 6:
                     nighttime += 1
-        except Exception as exception:
+        except Exception:
             print("ERROR", repository["name"], "is private!")
 
     totalCommits = morning + daytime + evening + nighttime
