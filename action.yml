@@ -39,7 +39,7 @@ inputs:
   
   SHOW_TOTAL_CONTRIBUTIONS:
     required: false
-    description: "Shows the total number of contributions"
+    description: "Shows the total number of contributions."
     default: "True"
 
 runs:
