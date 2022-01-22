@@ -36,6 +36,11 @@ inputs:
     required: false
     description: "Shows the most used language."
     default: "True"
+  
+  SHOW_TOTAL_CONTRIBUTIONS:
+    required: false
+    description: "Shows the total number of contributions"
+    default: "True"
 
 runs:
   using: "docker"
