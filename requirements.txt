@@ -4,7 +4,7 @@ charset-normalizer==2.0.4
 cycler==0.10.0
 Deprecated==1.2.10
 gitdb==4.0.5
-GitPython==3.1.7
+GitPython==3.1.30
 humanize==3.0.1
 idna==2.10
 kiwisolver==1.2.0
